@@ -1,0 +1,40 @@
+
+Introduction
+
+This file describes the data, in the form of the input files - and the transformations carried out on it by the R script.  Description of the Raw Data, its source, packaging etc. can be read in the README.txt file of the Folder "UCI HAR Dataset".
+
+The Data Modification and tidying is done by the run_analysis.R
+
+
+Source files:
+
+run_analysis.R loads the following files into the following R objects:
+
+activity_labels.txt into actlab
+
+test/X_test.txt into Xtest
+test/Y_test.txt into Ytest
+test/subject_test.txt into subtest
+
+train/X_train.txt into Xtest
+train/Y_train.txt into Ytest
+train/subject_train.txt into subtrain
+
+
+Ytest and Ytrain are given the column name "Activity"
+
+subtest and subtrain are given the column name "Subjects"
+
+Xtest, Ytest and subtest are linked by cbind
+Xtrain,Ytrain and subtrain are linked by cbind
+
+The new objects are then linked, train above test, to create a combined data object containing all the readings from both the train and test sets.
+
+Standard deviation and mean of all observations are taken and stored in local R objects.
+
+A new tidy data set is then produced by taking the mean and standard deviation of all observations, sorted by Subject and Activity.  This is done by converting the previous data.frame object to a data.table, and then writing the output to the tidy.csv output file.
+
+
+
+
+
